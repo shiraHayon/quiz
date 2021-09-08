@@ -1,0 +1,35 @@
+<div *ngIf="questionsList?.length === 10;">
+  <div>
+    <span>strikes: {{strikes}}</span><br/>
+    <span>time left: {{timeLeft}}</span>
+
+  </div>
+
+  <p-carousel
+    [value]="this.questionsList"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="false"
+    (onPage)="onPage($event)"
+    [page]="page"
+    [autoplayInterval]="autoplayInterval"
+    [showNavigators]="false"
+    [showIndicators]="false">
+    <ng-template let-question pTemplate="item">
+      <div class="question-item">
+        <h4 class="p-mb-1">{{question?.question}}</h4>
+        <div class="question-item__answers">
+          <p-card *ngFor="let ans of question?.answers"
+                  (click)="checkAnswer(ans)"
+                  [style]="{'width': '200px', 'height':'100px', 'margin': '10px'}">
+            {{ans.text}}
+          </p-card>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<div>
+  loading
+</div>

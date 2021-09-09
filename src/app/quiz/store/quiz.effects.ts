@@ -38,11 +38,9 @@ export class QuizEffects {
             }
           }
 
-          debugger
-
           question.answers = answers.sort(() => Math.random() - 0.5); // shuffling the array
           question.strikes = 0;
-          question.answerCorrectly = false;
+          question.answer_correctly = false;
 
           return new CheckUniqueQuestion(question);
         }),
@@ -73,9 +71,9 @@ export class QuizEffects {
       concatLatestFrom(() => this.store.select(store => store.quiz.questionsList)),
       mergeMap(([params, list]) => {
         const questionIndex = params['payload']['index'];
-        const question = params['payload']['question'];
+        const status = params['payload']['answer_correctly'];
         const clonedList = [...list];
-        clonedList[questionIndex] = question;
+        clonedList[questionIndex] = {...clonedList[questionIndex], answer_correctly: status};
         return of(new UpdateQuestionsList(clonedList));
       }),
     )

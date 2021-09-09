@@ -7,12 +7,18 @@ import {EffectsModule} from '@ngrx/effects';
 import {QuizEffects} from './store/quiz.effects';
 import {QuizReducer} from './store/quiz.reducer';
 import {CarouselModule} from 'primeng/carousel';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SummaryComponent} from './components/summary/summary.component';
+import {ToastModule} from 'primeng/toast';
+import {ButtonModule} from 'primeng/button';
 import {CardModule} from 'primeng/card';
-import {QuizComponent} from './components/quiz/quiz.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import {RouterModule} from '@angular/router';
+import {QuestionnaireComponent} from './components/questionnaire/questionnaire.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
-  declarations: [QuizComponent],
+  declarations: [QuestionnaireComponent, SummaryComponent, WelcomeComponent, QuizComponent],
   imports: [
     HttpClientModule,
     CommonModule,
@@ -22,6 +28,9 @@ import {QuizComponent} from './components/quiz/quiz.component';
     CarouselModule,
     BrowserAnimationsModule,
     CardModule,
+    ToastModule,
+    ButtonModule,
+    RouterModule
   ]
 })
 export class QuizModule {

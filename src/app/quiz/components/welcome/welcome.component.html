@@ -1,0 +1,15 @@
+<div class="welcome">
+  <h1>Welcome!</h1>
+  <ul>
+    <li>There are 10 questions.</li>
+    <li>Each question has 20 seconds.</li>
+    <li>You have 3 strikes to get the answer wrong.</li>
+  </ul>
+  <button class="btn-start"
+          pButton
+          type="button"
+          label="Start"
+          [disabled]="(questionsList$| async)?.length < 10"
+  (click)="start()">
+  </button>
+</div>

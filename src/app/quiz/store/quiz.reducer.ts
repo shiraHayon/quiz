@@ -13,9 +13,10 @@ const initialState: QuizState =
       incorrect_answers: [],
       answers: [],
       strikes: 0,
-      answerCorrectly: false
+      answer_correctly: false,
     },
     error: null,
+    currentIndex: null
   };
 
 export function QuizReducer(state: QuizState = initialState, action: QuizActions): any {
@@ -42,7 +43,7 @@ export function QuizReducer(state: QuizState = initialState, action: QuizActions
       return {
         ...state,
         currentQuestion: {
-          question: action.payload,
+          question: state.questionsList[action.payload],
           strikes: 0
         }
       };
@@ -53,7 +54,7 @@ export function QuizReducer(state: QuizState = initialState, action: QuizActions
         ...state,
         currentQuestion: {
           ...state.currentQuestion,
-          strikes: action.payload
+          strikes: action.payload,
         }
       };
 
@@ -61,6 +62,12 @@ export function QuizReducer(state: QuizState = initialState, action: QuizActions
       return {
         ...state,
         questionsList: action.payload
+      };
+
+    case QuizActionTypes.UPDATE_CURRENT_INDEX:
+      return {
+        ...state,
+        currentIndex: action.payload
       };
 
 

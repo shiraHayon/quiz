@@ -7,7 +7,7 @@ export interface QuestionItem {
   incorrect_answers: Array<string>;
   answers: Array<AnswerItem>;
   strikes: number;
-  answerCorrectly: boolean;
+  answer_correctly: boolean;
 }
 
 export interface AnswerItem {

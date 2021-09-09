@@ -10,7 +10,8 @@ export enum QuizActionTypes {
   CHECK_UNIQUE_QUESTION = '[QUIZ Check Unique Question',
   SET_STRIKES = '[QUIZ] Set Strikes',
   SET_QUESTION_STATUS = '[QUIZ] Set Question Status',
-  UPDATE_QUESTIONS_LIST = '[QUIZ] Update Questions List'
+  UPDATE_QUESTIONS_LIST = '[QUIZ] Update Questions List',
+  UPDATE_CURRENT_INDEX = '[QUIZ] Update Current Index'
 }
 
 export class GetQuestionAction implements Action {
@@ -49,7 +50,7 @@ export class AddQuestionToList {
 export class SetCurrentQuestion {
   readonly type = QuizActionTypes.SET_CURRENT_QUESTION;
 
-  constructor(public payload: QuestionItem) {
+  constructor(public payload: number) {
   }
 }
 
@@ -63,7 +64,7 @@ export class SetStrikes {
 export class SetQuestionStatus {
   readonly type = QuizActionTypes.SET_QUESTION_STATUS;
 
-  constructor(public payload: { question: QuestionItem, index: number }) {
+  constructor(public payload: { answer_correctly: boolean, index: number }) {
   }
 }
 
@@ -74,6 +75,14 @@ export class UpdateQuestionsList {
   }
 }
 
+export class UpdateCurrentIndex {
+  readonly type = QuizActionTypes.UPDATE_CURRENT_INDEX;
+
+  constructor(public payload: number) {
+  }
+
+}
+
 export type QuizActions = GetQuestionAction
   | GetQuestionSuccessAction
   | GetQuestionFailureAction
@@ -82,3 +91,4 @@ export type QuizActions = GetQuestionAction
   | SetStrikes
   | SetQuestionStatus
   | UpdateQuestionsList
+  | UpdateCurrentIndex

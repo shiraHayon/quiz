@@ -1,0 +1,19 @@
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  font-size: 1rem;
+  margin: 2rem auto;
+}
+
+.question-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .question-item-answers {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+}

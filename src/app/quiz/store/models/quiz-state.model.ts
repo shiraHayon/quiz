@@ -4,4 +4,5 @@ export interface QuizState {
   questionsList: Array<QuestionItem>;
   currentQuestion: QuestionItem;
   error: Error;
+  currentIndex: number;
 }
